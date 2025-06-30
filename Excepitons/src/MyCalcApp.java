@@ -12,14 +12,9 @@ public class MyCalcApp {
         int val = sc.nextInt();
 
         Calculator cal = new Calculator();
-try{
-    double douVal =   cal.caldouble(val);
-    System.out.println("new double value :"+douVal);
-}catch (MyArithException a)
-{
-    System.out.println(a.getMessage());
-}
 
+        double douVal = cal.caldouble(val);
+        System.out.println("new double value :" + douVal);
 
 
     }
