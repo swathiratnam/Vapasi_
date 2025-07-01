@@ -1,4 +1,4 @@
-import com.multpethreading.TicketBooking;
+import com.multithreading.TicketBooking;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

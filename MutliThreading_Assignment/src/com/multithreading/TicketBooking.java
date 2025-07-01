@@ -1,4 +1,4 @@
-package com.multpethreading;
+package com.multithreading;
 
 public class TicketBooking implements Runnable {
 
