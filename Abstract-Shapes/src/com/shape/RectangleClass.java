@@ -1,4 +1,4 @@
-package Abstract;
+package com.shape;
 
 public class RectangleClass extends Shape {
     double len;
@@ -21,7 +21,7 @@ public class RectangleClass extends Shape {
     }
 
     @Override
-    double calculateArea() {
+    public double calculateArea() {
         double area = len * width;
         if (len == width) {
             System.out.println("Area of the Sqaure is :" + area);
@@ -33,7 +33,7 @@ public class RectangleClass extends Shape {
     }
 
     @Override
-    double calculatePerimeter() {
+    public double calculatePerimeter() {
         double peri = 2 * (len + width);
         if (len == width) {
             System.out.println("Perimeter of the Sqaure is: " + peri);

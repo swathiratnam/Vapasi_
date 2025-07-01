@@ -1,4 +1,4 @@
-package Abstract;
+package com.shape;
 
 public class TriangleClass extends Shape {
 
@@ -13,7 +13,7 @@ public class TriangleClass extends Shape {
     }
 
     @Override
-    double calculateArea() {
+    public double calculateArea() {
         double s = (side1 + side2 + side3) / 2;
         double a = s * (s - side1) * (s - side2) * (s - side3);
         double area = Math.sqrt(a);
@@ -25,7 +25,7 @@ public class TriangleClass extends Shape {
     }
 
     @Override
-    double calculatePerimeter() {
+    public double calculatePerimeter() {
 
         double peri = side1 + side2 + side3;
         System.out.println("Perimeter of Triangle is :" + peri);
