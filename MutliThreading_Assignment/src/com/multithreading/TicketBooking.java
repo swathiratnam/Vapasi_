@@ -1,6 +1,9 @@
 package com.multithreading;
 
+import java.util.logging.Logger;
+
 public class TicketBooking implements Runnable {
+    private static final Logger logger = Logger.getLogger(TicketBooking.class.getName());
 
     public String threadName;
 
@@ -9,20 +12,19 @@ public class TicketBooking implements Runnable {
     }
 
     public synchronized void booikng() {
-        System.out.println(threadName + " booking received.");
+        logger.info(threadName + " booking received.");
     }
 
     public synchronized void payment() {
-        System.out.println(threadName + " payment processed.");
+        logger.info(threadName + " payment processed.");
     }
 
     public synchronized void ticketConformation() {
-        System.out.println(threadName + " ticket Confirmed.");
+        logger.info(threadName + " ticket Confirmed.");
     }
 
     @Override
     public void run() {
-
         booikng();
         payment();
         ticketConformation();
