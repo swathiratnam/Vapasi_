@@ -2,19 +2,21 @@ package com.kt.util;
 
 import com.kt.entity.Expenses;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenseFileReader {
 
-    public static List<Expenses> readExpenseFromFile(String filePath) {
+    public static List<Expenses> readExpenseFromFile() {
 
         List<Expenses> expensesList = new ArrayList<>();
+        InputStream inputStream = ExpenseFileReader.class.getClassLoader().getResourceAsStream("expense.txt");
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found!");
+        }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 //Formating A spent 100 for Snacks for A, B, C, D
@@ -24,7 +26,7 @@ public class ExpenseFileReader {
                 String[] rest = parts[1].split("for");
                 int amount = Integer.parseInt(rest[0].trim());
 
-                String[] afterSecondFor = parts[1].split("for",3);
+                String[] afterSecondFor = parts[1].split("for", 3);
                 String spentOnStr = afterSecondFor[2].trim();
 
                 String[] spentOArray = spentOnStr.split(",");

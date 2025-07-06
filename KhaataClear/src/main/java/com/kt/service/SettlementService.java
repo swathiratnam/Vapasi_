@@ -1,38 +1,12 @@
-package com.kt.dao;
+package com.kt.service;
 
-import com.kt.entity.Expenses;
-import com.kt.util.ExpenseFileReader;
-
-import java.util.*;
+import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.logging.Logger;
 
-public class ExpenseDaoImpl implements ExpenseDao {
+public class SettlementService {
+    Logger log = Logger.getLogger("Settlement List");
 
-    Logger log = Logger.getLogger("Expense List");
-   /* @Override
-    public List<Expenses> readExpenseFromFile(String filePath) {
-        return ExpenseFileReader.readExpenseFromFile(filePath);
-    }*/
-
-    @Override
-    public Map<String, Double> calculateExpenses(String filePath) {
-        List<Expenses> expensesList = ExpenseFileReader.readExpenseFromFile(filePath);
-        Map<String, Double> balanceSheet = new HashMap<>();
-        for (Expenses expense : expensesList) {
-            double share = expense.getAmount() / expense.getSpentOn().size();
-            for (String spentOn : expense.getSpentOn()) {
-                balanceSheet.put(spentOn, balanceSheet.getOrDefault(spentOn, 0.0) - share);
-                System.out.println(balanceSheet);
-            }
-            balanceSheet.put(expense.getPaidBy(), balanceSheet.getOrDefault(expense.getPaidBy(), 0.0) + expense.getAmount());
-            System.out.println("Balance Sheet : ");
-            System.out.println(balanceSheet);
-        }
-
-        return balanceSheet;
-    }
-
-    @Override
     public void settleExpenses(Map<String, Double> netBalanceList) {
 
         PriorityQueue<Map.Entry<String, Double>> creditors = new PriorityQueue<>(
@@ -44,7 +18,6 @@ public class ExpenseDaoImpl implements ExpenseDao {
                 creditors.offer(entry);
             } else if (entry.getValue() < 0) {
                 debtors.offer(entry);
-
             }
         }
 
@@ -60,12 +33,9 @@ public class ExpenseDaoImpl implements ExpenseDao {
             credit.setValue(credit.getValue() - settlementAmount);
             debit.setValue(debit.getValue() + settlementAmount);
 
-
             if (credit.getValue() > 0) creditors.offer(credit);
             if (debit.getValue() < 0) debtors.offer(debit);
 
         }
-
-
     }
 }
