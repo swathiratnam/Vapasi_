@@ -1,8 +1,10 @@
 package com.kt.service;
 
+import java.util.Map;
+
 public interface ExpenseService {
 
-  void calculateExpenses();
+  Map<String, Double> calculateExpenses();
 
 
 }

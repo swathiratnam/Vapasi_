@@ -37,7 +37,6 @@ public class ExpenseFileReader {
                 }
 
                 expensesList.add(new Expenses(amount, paidBy, spentOnList));
-                System.out.println(expensesList);
 
             }
 
