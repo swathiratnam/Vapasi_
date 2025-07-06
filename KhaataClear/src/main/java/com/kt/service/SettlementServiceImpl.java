@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 import java.util.logging.Logger;
 
 public class SettlementServiceImpl implements SettlementService {
-    Logger log = Logger.getLogger("SettlementServiceImpl");
+    Logger log = Logger.getLogger("SettlementServiceImpl.class");
 
     @Override
     public void settleExpenses(Map<String, Double> netBalanceList) {
