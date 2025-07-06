@@ -8,8 +8,8 @@ import java.util.*;
 public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
-    public Map<String, Double> calculateExpenses() {
-        List<Expenses> expensesList = ExpenseFileReader.readExpenseFromFile();
+    public Map<String, Double> calculateExpenses(String fileName) {
+        List<Expenses> expensesList = ExpenseFileReader.readExpenseFromFile(fileName);
         Map<String, Double> balanceSheet = new HashMap<>();
         for (Expenses expense : expensesList) {
             double share = expense.getAmount() / expense.getSpentOn().size();

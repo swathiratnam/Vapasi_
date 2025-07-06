@@ -12,7 +12,7 @@ class ExpenseFileReaderTest {
     @Test
     void testReadExpenseFromFile() {
 
-        List<Expenses> expenses = ExpenseFileReader.readExpenseFromFile();
+        List<Expenses> expenses = ExpenseFileReader.readExpenseFromFile("expense.txt");
         assertNotNull(expenses);
         assertEquals(3, expenses.size());
 
@@ -33,4 +33,16 @@ class ExpenseFileReaderTest {
 
     }
 
+    @Test
+    void testFileNotFound() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            ExpenseFileReader.readExpenseFromFile("non_existingFile.txt");
+        });
+
+        String expectedMessage = "File not found";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
 }
+

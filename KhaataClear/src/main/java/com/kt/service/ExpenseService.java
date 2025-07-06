@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface ExpenseService {
 
-  Map<String, Double> calculateExpenses();
+  Map<String, Double> calculateExpenses(String fileName);
 
 
 }

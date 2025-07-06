@@ -8,7 +8,7 @@ public class ExpenseCalculationMain {
     public static void main(String[] args) {
 
         ExpenseServiceImpl expenseDao = new ExpenseServiceImpl();
-        Map<String, Double> expense = expenseDao.calculateExpenses();
+        Map<String, Double> expense = expenseDao.calculateExpenses("expense.txt");
         SettlementService service = new SettlementServiceImpl();
         service.settleExpenses(expense);
 
