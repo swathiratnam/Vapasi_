@@ -1,6 +1,6 @@
 package com.kt.service;
 
-import com.kt.entity.Expenses;
+import com.kt.model.Expenses;
 import com.kt.util.ExpenseFileReader;
 
 import java.util.*;
@@ -19,8 +19,6 @@ public class ExpenseServiceImpl implements ExpenseService {
             balanceSheet.put(expense.getPaidBy(), balanceSheet.getOrDefault(expense.getPaidBy(), 0.0) + expense.getAmount());
         }
 
-        SettlementServiceImpl service = new SettlementServiceImpl();
-        service.settleExpenses(balanceSheet);
         return balanceSheet;
     }
 }

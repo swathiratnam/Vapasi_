@@ -1,12 +1,12 @@
-package com.kt.entity;
+package com.kt.model;
 
 import java.util.List;
 
 public class Expenses {
 
-    double amount;
-    String paidBy;
-    List<String> spentOn;
+    private double amount;
+    private String paidBy;
+    private List<String> spentOn;
 
 
     public Expenses(double amount, String paidBy, List<String> spentOn) {
@@ -26,7 +26,6 @@ public class Expenses {
     public List<String> getSpentOn() {
         return spentOn;
     }
-
 
     @Override
     public String toString() {

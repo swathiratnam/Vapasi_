@@ -1,6 +1,6 @@
 package com.kt.util;
 
-import com.kt.entity.Expenses;
+import com.kt.model.Expenses;
 
 import java.io.*;
 import java.util.ArrayList;
