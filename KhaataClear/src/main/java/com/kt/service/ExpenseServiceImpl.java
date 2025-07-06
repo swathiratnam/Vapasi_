@@ -7,9 +7,14 @@ import java.util.*;
 
 public class ExpenseServiceImpl implements ExpenseService {
 
+    private final ExpenseFileReader expenseFileReader;
+    public ExpenseServiceImpl(ExpenseFileReader expenseFileReader) {
+        this.expenseFileReader = expenseFileReader;
+    }
+
     @Override
-    public Map<String, Double> calculateExpenses() {
-        List<Expenses> expensesList = ExpenseFileReader.readExpenseFromFile();
+    public Map<String, Double> calculateExpenses(String fileName) {
+        List<Expenses> expensesList = expenseFileReader.readExpenseFromFile(fileName);
         Map<String, Double> balanceSheet = new HashMap<>();
         for (Expenses expense : expensesList) {
             double share = expense.getAmount() / expense.getSpentOn().size();

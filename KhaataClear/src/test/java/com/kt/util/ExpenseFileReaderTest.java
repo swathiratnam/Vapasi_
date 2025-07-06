@@ -1,6 +1,7 @@
 package com.kt.util;
 
 import com.kt.model.Expenses;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,11 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class ExpenseFileReaderTest {
+    ExpenseFileReader expenseFileReader;
+    @BeforeEach
+    void setUp(){
+        expenseFileReader = new ExpenseFileReader();
+    }
 
     @Test
     void testReadExpenseFromFile() {
 
-        List<Expenses> expenses = ExpenseFileReader.readExpenseFromFile();
+        List<Expenses> expenses = expenseFileReader.readExpenseFromFile("expense.txt");
         assertNotNull(expenses);
         assertEquals(3, expenses.size());
 
