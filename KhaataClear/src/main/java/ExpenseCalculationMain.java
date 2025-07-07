@@ -10,12 +10,12 @@ import java.util.logging.Logger;
 public class ExpenseCalculationMain {
     public static void main(String[] args) {
 
-        Logger log = Logger.getLogger("ExpenseCalculationMain");
-        ExpenseServiceImpl expenseDao = new ExpenseServiceImpl(new ExpenseFileReader());
+        Logger log = Logger.getLogger(ExpenseCalculationMain.class.getName());
+        ExpenseServiceImpl expenseService = new ExpenseServiceImpl(new ExpenseFileReader());
         SettlementService service = new SettlementServiceImpl();
       
-        Map<String, Double> expense = expenseDao.calculateExpenses("expense1.txt");        
-        List<String> settledExpenses = service.settleExpenses(expense);
+        Map<String, Double> expenses = expenseService.calculateExpenses("expense1.txt");
+        List<String> settledExpenses = service.settleExpenses(expenses);
       
         for (String s : settledExpenses) {
             log.info(s);

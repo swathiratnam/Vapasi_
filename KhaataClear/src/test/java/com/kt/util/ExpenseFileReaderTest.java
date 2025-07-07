@@ -45,7 +45,7 @@ class ExpenseFileReaderTest {
     @Test
     void testFileNotFound() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            ExpenseFileReader.readExpenseFromFile("non_existingFile.txt");
+            expenseFileReader.readExpenseFromFile("non_existingFile.txt");
         });
 
         String expectedMessage = "File not found";
