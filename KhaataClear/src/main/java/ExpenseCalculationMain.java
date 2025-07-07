@@ -11,7 +11,7 @@ public class ExpenseCalculationMain {
     public static void main(String[] args) {
         Logger log = Logger.getLogger("ExpenseCalculationMain");
         ExpenseServiceImpl expenseDao = new ExpenseServiceImpl(new ExpenseFileReader());
-        Map<String, Double> expense = expenseDao.calculateExpenses("expense.txt");
+        Map<String, Double> expense = expenseDao.calculateExpenses("expense1.txt");
         SettlementService service = new SettlementServiceImpl();
         List<String> settledExpenses = service.settleExpenses(expense);
         for (String s : settledExpenses) {
