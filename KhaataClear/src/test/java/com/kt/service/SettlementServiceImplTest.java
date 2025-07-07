@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,8 +21,7 @@ class SettlementServiceImplTest {
 
     @Test
     void settleExpenses() {
-        Map<String, Double> balance = expenseService.calculateExpenses("expense.txt");
-        List<String> setteldList = service.settleExpenses(balance);
+        List<String> setteldList = service.settleExpenses(expenseService.calculateExpenses("expense.txt"));
         assertNotNull(setteldList);
         assertEquals(3,setteldList.size());
         assertEquals("C Pays B  275",setteldList.get(0));
