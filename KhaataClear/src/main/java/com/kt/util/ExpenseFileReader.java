@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ExpenseFileReader {
 
-    public static List<Expenses> readExpenseFromFile(String fileName) {
 
+    public  List<Expenses> readExpenseFromFile(String fileName) {
         List<Expenses> expensesList = new ArrayList<>();
         InputStream inputStream = ExpenseFileReader.class.getClassLoader().getResourceAsStream(fileName);
         if (inputStream == null) {

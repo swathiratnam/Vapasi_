@@ -1,5 +1,7 @@
 package com.kt.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.logging.Logger;
@@ -8,7 +10,8 @@ public class SettlementServiceImpl implements SettlementService {
     Logger log = Logger.getLogger("SettlementServiceImpl.class");
 
     @Override
-    public void settleExpenses(Map<String, Double> netBalanceList) {
+    public List<String> settleExpenses(Map<String, Double> netBalanceList) {
+        List<String> settledExpense = new ArrayList<>();
 
         PriorityQueue<Map.Entry<String, Double>> creditors = new PriorityQueue<>(
                 (a, b) -> Double.compare(b.getValue(), a.getValue()));
@@ -29,7 +32,7 @@ public class SettlementServiceImpl implements SettlementService {
 
             assert debit != null;
             double settlementAmount = Math.min(credit.getValue(), -debit.getValue());
-            log.info(debit.getKey() + " Pays " + credit.getKey() + "  " + (int) settlementAmount);
+            settledExpense.add(debit.getKey() + " Pays " + credit.getKey() + "  " + (int) settlementAmount);
 
             credit.setValue(credit.getValue() - settlementAmount);
             debit.setValue(debit.getValue() + settlementAmount);
@@ -38,5 +41,6 @@ public class SettlementServiceImpl implements SettlementService {
             if (debit.getValue() < 0) debtors.offer(debit);
 
         }
+        return settledExpense;
     }
 }

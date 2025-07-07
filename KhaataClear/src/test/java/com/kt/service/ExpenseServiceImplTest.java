@@ -1,25 +1,35 @@
 package com.kt.service;
 
+import com.kt.util.ExpenseFileReader;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Map;
+
 import com.kt.model.Expenses;
 import com.kt.util.ExpenseFileReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
+
 
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+
+
 
 class ExpenseServiceImplTest {
-
     private ExpenseService expenseService;
 
     @BeforeEach
     void setUp() {
-        expenseService = new ExpenseServiceImpl();
+        ExpenseFileReader expenseFileReader = new ExpenseFileReader();
+        expenseService = new ExpenseServiceImpl(expenseFileReader);
     }
+
     @Test
     void testCalculateExpenses_withSingleExpense() {
         Expenses expense =mock(Expenses.class);
