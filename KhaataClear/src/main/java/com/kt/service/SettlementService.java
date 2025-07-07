@@ -1,7 +1,8 @@
 package com.kt.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface SettlementService {
-    void settleExpenses(Map<String, Double> netBalanceList);
+    List<String> settleExpenses(Map<String, Double> netBalanceList);
 }
