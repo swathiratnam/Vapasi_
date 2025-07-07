@@ -14,6 +14,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Map<String, Double> calculateExpenses(String fileName) {
+
         List<Expenses> expensesList = expenseFileReader.readExpenseFromFile(fileName);
         Map<String, Double> balanceSheet = new HashMap<>();
         for (Expenses expense : expensesList) {

@@ -9,7 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class ExpenseFileReaderTest {
-    ExpenseFileReader expenseFileReader;
+  
+   ExpenseFileReader expenseFileReader;
+  
     @BeforeEach
     void setUp(){
         expenseFileReader = new ExpenseFileReader();
@@ -19,6 +21,7 @@ class ExpenseFileReaderTest {
     void testReadExpenseFromFile() {
 
         List<Expenses> expenses = expenseFileReader.readExpenseFromFile("expense.txt");
+
         assertNotNull(expenses);
         assertEquals(3, expenses.size());
 
@@ -39,4 +42,16 @@ class ExpenseFileReaderTest {
 
     }
 
+    @Test
+    void testFileNotFound() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            ExpenseFileReader.readExpenseFromFile("non_existingFile.txt");
+        });
+
+        String expectedMessage = "File not found";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
 }
+

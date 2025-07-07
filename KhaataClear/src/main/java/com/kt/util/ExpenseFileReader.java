@@ -8,12 +8,12 @@ import java.util.List;
 
 public class ExpenseFileReader {
 
-    public  List<Expenses> readExpenseFromFile(String fileName) {
 
+    public  List<Expenses> readExpenseFromFile(String fileName) {
         List<Expenses> expensesList = new ArrayList<>();
         InputStream inputStream = ExpenseFileReader.class.getClassLoader().getResourceAsStream(fileName);
         if (inputStream == null) {
-            throw new IllegalArgumentException("file not found!");
+            throw new IllegalArgumentException("File not found");
         }
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -46,6 +46,4 @@ public class ExpenseFileReader {
         return expensesList;
 
     }
-
-
 }
